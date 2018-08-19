@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script> -->
+    <script>
+        var App= {
+            template:`
+            <div>
+                <button @click=sendAjax>发送请求</button>
+            </div>
+            `,
+            methods:{
+                sendAjax:function(){
+                    //让组件具备axios对象的引用
+                    //axios.get(url,options)
+                    //跨域没有解决
+                    axios.get('https://api.douban.com/v2/book/1220562').then(function(res){
+                        console.log(res);
+                    }).catch(function(err){
+                        console.log(err);
+                    })
+                }
+            }
+        }
+
+        //组件内的每一个this对象，都是Vue的孩子
+        //Vue祖宗的原型，就会贡献给所有的孩子
+        Vue.prototype.$axios = axios;
+
+        new Vue({
+            el:"#app",
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        });
+    </script>
+</body>
+</html>

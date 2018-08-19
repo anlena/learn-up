@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="./node_modules/vue/dist/vue.js"></script>
+    <!-- 1.引入vue-router(核心插件)对象 -->
+    <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.js"></script>
+    
+    <script>
+        var isLogin = false;
+        var Login = {
+            template:`<div>
+                我是登录页面
+            </div>`,
+            created:function(){
+                isLogin = true;
+            }
+        };
+        var Music = {
+            template:`<div>
+                我是音乐页面
+            </div>`,
+            created:function(){
+                // console.log(this.$route.params);
+            }
+        }
+
+        var router = new VueRouter();
+        
+        //可以多次追加路由规则，动态的获取路由规则
+        router.addRoutes([
+                //路由对象有了名称就等于有了变量名,router-link只需说明这个变量名就可以了
+                
+                //默认路由
+                {
+                    path:'/',
+                    redirect:{name:'login'}
+                },
+                {
+                    name:'login',
+                    path:'/login',
+                    component:Login
+                },
+                //meta:{isChecked:true} 给未来路由的权限控制(路由守卫)，来做参照条件
+                {
+                    name:'music',
+                    path:'/music',
+                    component:Music,
+                    meta:{
+                        isChecked:true
+                    }
+                }
+            ]);//更为灵活，可以方便调用后追加路由规则
+
+        router.beforeEach(function(to,from,next){
+            // console.log(to);
+            // console.log(from);
+
+            //login等..放行
+            // if(to.name === "login" || to.path === "/"){
+            
+            if(!to.meta.isChecked){
+                next();//不调用next就会卡住
+            }else{
+                //音乐访问，需要判断是否登录
+                if(isLogin){
+                    next(); //放行  
+                            //next(false)   取消用户导航
+                }else{
+                    alert("先登录");
+
+                    //重定向
+                    next({name:'login'})
+                }
+            }
+        })
+
+
+        //6.指定路由改变局部的位置
+        var App = {
+            template:`
+                <div>
+                    <router-link :to="{name:'login'}">登录</router-link>
+                    <router-link :to="{name:'music'}">去听歌</router-link> 
+                    <router-view></router-view>
+                </div>
+            `,
+        }
+
+        //5.将配置好的路由对象关联到vue实例中
+        new Vue({
+            el:'#app',
+            router:router,
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        })
+    </script>
+</body>
+</html>

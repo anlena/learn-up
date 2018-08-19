@@ -1,0 +1,89 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script> -->
+    <script>
+        var App= {
+            template:`
+            <div>
+                响应1:{{res1}}
+                响应2:{{res2}}
+                <button @click=sendAjax>发送请求</button>
+            </div>
+            `,
+            data:function(){
+                return{
+                    res1:'',
+                    res2:''
+                }
+            },
+            methods:{
+                sendAjax:function(){
+                    //配置公共数据
+                    this.$axios.defaults.baseURL = 'http://127.0.0.1:8080/'
+                    //所有请求自带的头信息
+                    //覆盖原本头部信息
+                    this.$axios.defaults.headers = {};
+                    //修改头部信息
+                    this.$axios.defaults.headers.accept = 'abc';
+                    
+                    //请求1
+                    this.$axios.get('/',{
+                        params:{id:1},
+                        transformResponse:function(data){
+                            console.log(data);
+                            data = "改变了数据";
+
+                            return data;
+                        }
+                    })
+                    .then(res => {
+                        console.log(res.data)
+                    })
+                    .catch(err => {
+
+                    });
+
+                    //请求2
+                    this.$axios.get('add','name=jack',{
+                        transformRequest:function(){
+                            //加工请求数据
+                            return 'name=rose'
+                        },
+                        timeout:1000
+                    })
+                    .then(res => {
+
+                    })
+                    .catch(err => {
+
+                    })
+
+
+                }
+            }
+        }
+
+        //组件内的每一个this对象，都是Vue的孩子
+        //Vue祖宗的原型，就会贡献给所有的孩子
+        Vue.prototype.$axios = axios;
+
+        new Vue({
+            el:"#app",
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        });
+    </script>
+</body>
+</html>
