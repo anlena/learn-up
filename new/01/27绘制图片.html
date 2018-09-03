@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var c = document.querySelector("canvas");
+    var ctx = c.getContext("2d");
+
+    //把一个图画在画布上
+    // 创建图片的对象，设置图片的显示的路径，图片进行加载，加载后，把图片显示在画布上
+
+    var img = document.createElement("img");
+    img.src = "./image/1.jpg";
+    //图片加载
+    img.onload = function(){
+        //说明图片加载完 
+        //图片绘制到画布上
+        // ctx.drawImage(img,0,0)
+        //另一种显示方式,把图片在某个位置显示在画布上，并且设置显示图片的大小
+        // ctx.drawImage(img,100,100,200,100);
+        
+        //相对图片要显示的横纵坐标,图片要显示的大小，画布的位置的横纵坐标，在画布中要显示的宽和高
+        ctx.drawImage(img,180,50,300,150,100,100,300,170)
+    }
+</script>
+</html>

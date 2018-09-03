@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+</body>
+<script>
+    //获取画布
+    var c = document.querySelector("canvas");
+    //获取画图对象
+    var ctx = c.getContext("2d");
+
+    ctx.moveTo(100,100);
+    ctx.lineTo(400,100);
+    ctx.strokeStyle = "red";
+    ctx.lineWidth = 10;
+
+    //画一条虚线
+    ctx.setLineDash([10,10]);//第一个参数是虚线的长度，第二个参数是空白点的长度,，第三个虚线的长度
+    ctx.setLineDash([10,10,15]);//第一个参数是虚线的长度，第二个参数是空白点的长度,，第三个虚线的长度
+    ctx.stroke();
+</script>
+</html>

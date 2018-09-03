@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+</body>
+<script>
+    //获取画布
+    var c = document.querySelector("canvas");
+    //获取画图对象
+    var ctx = c.getContext("2d");
+
+    //创建线性渐变方案
+    //开始的横纵坐标，结束的横纵坐标
+    var lgd = ctx.createLinearGradient(100,100,400,100);
+    //添加渐变的颜色
+    lgd.addColorStop(0,'red');
+    lgd.addColorStop(0.2,"blue");
+    lgd.addColorStop(0.6,"orange");
+    lgd.addColorStop(1,'green');
+    //设置渐变的方案
+    //0到1之间的小数形式
+    ctx.strokeStyle = lgd;
+    //绘制直线
+    ctx.moveTo(100,100);
+    ctx.lineTo(400,100);
+    ctx.lineWidth = 20;
+    ctx.stroke();
+
+</script>
+</html>

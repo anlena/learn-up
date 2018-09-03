@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+
+<body>
+
+    <script>
+        var VueComponent = {
+            name: 'jack',
+            created: function () {
+                console.log(this)
+            },
+            created2() {
+                console.log(this)
+            },
+            created3: () => {   //this向上级function绑定
+                console.log(this)
+            }
+        }
+
+        VueComponent.created();
+        VueComponent.created2();
+        VueComponent.created3();
+    </script>
+</body>
+
+</html>

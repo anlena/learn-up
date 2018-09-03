@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+</body>
+<script>
+    // 绘制一条直线
+    //先获取这个画布
+
+    var c = document.querySelector("canvas");
+    //获取绘制图像的对象
+    var ctx = c.getContext("2d");
+    //开始的坐标
+    ctx.moveTo(100,100);
+    ctx.lineTo(400,100);
+    ctx.strokeStyle="red";
+    // ctx.lineWidth = 20;
+    //绘制
+    ctx.stroke();
+    ctx.beginPath();    //重置路径
+
+    //开始的坐标
+    ctx.moveTo(100,300);
+    ctx.lineTo(400,300);
+    ctx.strokeStyle="green";
+    // ctx.lineWidth = 20;
+    //绘制
+    ctx.stroke();
+    ctx.beginPath();    //重置路径
+</script>
+</html>

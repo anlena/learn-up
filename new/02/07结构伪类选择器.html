@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        ul{
+            cursor: pointer;
+            list-style: none;
+        }
+        li{
+            border: 1px solid dodgerblue;
+        }
+
+        /*  所有li的第一个 */
+        li:first-child{
+            color: darkblue;
+        }
+
+        /* 最后一个 */
+        li:last-child{
+            color: darkblue;
+        }
+        /* 第三个 */
+        li:nth-child(3){
+            color: darkblue;
+        }
+        /* 倒数第二个 */
+        li:nth-last-child(2){
+            color: saddlebrown;
+        }
+        /* 奇数 */
+        li:nth-child(odd){
+            color: saddlebrown;
+        }
+        /* 奇数 */
+        li:nth-child(even){
+            color: saddlebrown;
+        }
+    </style>
+</head>
+<body>
+    <ul>
+        <li>1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+        <li>6</li>
+        <li>7</li>
+        <li>8</li>
+    </ul>
+</body>
+</html>

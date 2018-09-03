@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <script>
+        //键，值
+        //设置值
+        window.sessionStorage.setItem("name","帅哥");
+        window.sessionStorage.setItem("age",18);
+        window.sessionStorage.setItem("sex","男");
+
+        //获取
+        var age = window.sessionStorage.getItem("age");
+        console.log(age);
+
+        //移除
+        window.sessionStorage.removeItem("name");
+
+        //清空
+        window.sessionStorage.clear();
+    </script>
+</head>
+<body>
+    
+</body>
+</html>

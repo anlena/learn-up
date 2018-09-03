@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var c = document.querySelector("canvas");
+    var ctx = c.getContext("2d");
+
+    //画圆
+    //坐标的位置，半径，开始的弧度，结束的弧度，顺时针还是逆时针(false,顺时针)
+    ctx.arc(200,150,50,0,1.5*Math.PI,false);
+    ctx.stroke();
+
+</script>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        div{
+            width: 300px;
+            height: 200px;
+            border: 3px solid red;
+        }
+        /* p后面所有的url---div里 */
+        p~ul{
+            background-color: green;
+        }
+        
+        /* href以p开头 */
+        a[href^="p"]{
+            color: yellow;
+        }
+
+        /* 以q结尾 */
+        a[href$="q"]{
+            color: red;
+        }
+
+        /* 带有ll属性的 */
+        a[href*="ll"]{
+            color: dodgerblue
+        }
+    </style>
+</head>
+<body>
+    
+</body>
+</html>

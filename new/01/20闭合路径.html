@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="600" height="500"></canvas>
+</body>
+<script>
+    //获取画布
+    var c = document.querySelector("canvas");
+    //获取画图对象
+    var ctx = c.getContext("2d");
+
+    ctx.moveTo(100,100);
+    ctx.lineTo(300,300);
+    ctx.lineTo(100,300);
+    // ctx.lineTo(100,100);
+    //闭合路径，帮助我们封口
+    ctx.closePath();
+    ctx.strokeStyle = "green";
+    ctx.stroke();
+    ctx.beginPath();
+
+    //矩形
+    ctx.moveTo(400,100);
+    ctx.lineTo(550,100);
+    ctx.lineTo(550,200);
+    ctx.lineTo(400,200);
+    ctx.closePath();
+    ctx.stroke();
+    ctx.beginPath();
+
+    //填充一个矩形
+    ctx.fillStyle= "orange";
+    ctx.fillRect(100,350,300,100);
+    ctx.fill();
+
+    //梯形
+    ctx.moveTo(450,300);
+    ctx.lineTo(500,250);
+    ctx.lineTo(500,450);
+    ctx.lineTo(450,400);
+    ctx.closePath();
+    ctx.stroke();
+</script>
+</html>

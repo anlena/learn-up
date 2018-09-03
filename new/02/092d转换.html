@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 500px;
+            margin: 0 auto;
+        }
+        .cls{
+            margin: 50px auto;
+        }
+        .box:hover .cls{
+            /* 横纵向偏移 */
+            transform: translateX(20px);
+            transform: translateY(20px);
+            transform: translate(20px，20px);
+
+            /* 旋转 */
+            transform: rotate(45deg);
+
+            /* 缩放 */
+            transform: scale(1.2);
+            transform: scale(2,3);
+
+            /* 倾斜 */
+            /* x轴，Y轴 */
+            transform: skew(30deg,40deg);
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cls">好</div>
+    </div>
+</body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var c = document.querySelector("canvas");
+    var ctx = c.getContext("2d");
+    
+    ctx.moveTo(300,0);
+    ctx.lineTo(300,400);
+    ctx.stroke();
+
+    ctx.beginPath();
+
+    ctx.moveTo(0,200);
+    ctx.lineTo(600,200)
+    ctx.stroke();
+
+    //绘制文本
+    ctx.font = "50px 宋体";   //文字的大小、字体
+    //设置文本的对齐方式
+    ctx.textAlign = "center";   //left,right,center
+    //设置上下的对齐方式
+    ctx.textBaseline = "middle";    //top/middle/bottom/alphabetice
+    //设置阴影的颜色
+    ctx.shadowColor = "blue";
+    //水平方向
+    ctx.shadowOffsetX = 5;
+    //垂直方向
+    ctx.shadowOffsetY = 5;
+    //阴影的模糊度
+    ctx.shadowBlur = 5;
+
+    //镂空的文本及坐标位置
+    ctx.strokeText("全世界最帅",300,200);
+    
+    //填充的文本及坐标位置
+    ctx.fillText("全世界最帅",300,200);
+
+
+</script>
+</html>

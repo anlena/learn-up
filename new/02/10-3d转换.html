@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .box{
+            width: 600px;
+            height: 500px;
+            background:pink;
+            margin: 0 auto;
+            /* 透视效果 */
+            perspective: 1000px;
+        }
+        .cls{
+            /* 平面转立体  */
+            transform-style: preserve-3d;
+
+            /* x y x 平移*/
+            transform: translate(10px,10px,10px);
+
+            /* x y z 旋转*/
+            transform: rotate(10deg,20deg,30deg);
+
+            /* 缩放 x y z*/
+            transform: scale(1,2,3);
+
+            /* 倾斜 x y */
+            transform: skew()
+        }
+    </style>
+</head>
+<body>
+    <div class="box">
+        <div class="cls">好</div>
+    </div>
+</body>
+</html>

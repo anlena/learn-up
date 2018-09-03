@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+</body>
+<script>
+    //获取画布
+    var c = document.querySelector("canvas");
+    //获取画图对象
+    var ctx = c.getContext("2d");
+
+    //创建径性渐变
+    //开始的横纵坐标，开始的半径，结束的横纵坐标，结束的半径
+    var rgd = ctx.createRadialGradient(200,150,50,200,150,100)
+
+    //从0到1的小数
+    rgd.addColorStop(0,"red");
+    rgd.addColorStop(1,"green");
+
+    //设置样式
+    ctx.fillStyle = rgd;
+    //画一个矩形
+    ctx.moveTo(100,50);
+    ctx.lineTo(300,50);
+    ctx.lineTo(300,300);
+    ctx.lineTo(100,300);
+    ctx.closePath();
+    ctx.fill();
+</script>
+</html>

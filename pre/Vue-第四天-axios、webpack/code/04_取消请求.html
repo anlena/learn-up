@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+</head>
+<body>
+    <div id="app"></div>
+    <script src="https://cdn.bootcss.com/vue/2.5.17-beta.0/vue.js"></script>
+    <script src="https://cdn.bootcss.com/axios/0.18.0/axios.js"></script>
+    <!-- <script src="https://cdn.bootcss.com/vue-router/3.0.1/vue-router.min.js"></script> -->
+    <script>
+        var App= {
+            template:`
+            <div>
+                响应1:{{res1}}
+                响应2:{{res2}}
+                上传进度：{{rate}}%
+                选择文件：<input type="file" name="file" @change="changeFile" />
+                <button @click="sendAjax">发送请求</button>
+                <button @click="cancelAjax">取消请求</button>
+                <button @click="resume">续传</button>
+            </div>
+            `,
+            data:function(){
+                return{
+                    res1:'',
+                    res2:'',
+                    rate:0,
+                    loaded:0,
+                    file:{}
+                }
+            },
+            methods:{
+                resume:function(){
+                                    //文件开始      //文件结束
+                    var fileData = this.file.slice(this.loaded+1,this.fiel.size);
+                    //剪裁文件 
+                    var fd = new FormData();
+                    fd.append('file',this.file);
+                    
+
+                    //为了续传以后，再取消
+                    const CancelToken = axios.CancelToken;
+                    const source = CancelToken.source();
+                    this.source = source;
+
+                    this.$axios.post('url',fd,{
+                        CancelToken:source.token,
+                        onUploadProgress:function(progressEvent){
+                            //保存最后上传大小
+                            this.loaded = progressEvent.loaded;
+                            this.rate = (progressEvent.loaded/progressEvent.total)* 100;
+                        }
+                    }).then(res => {
+                        console.log(res);
+                    }).catch(err => {
+                        console.log(err);
+                    })
+                },
+                sendAjax:function(){
+
+                    const CancelToken = axios.CancelToken;
+                    const source = CancelToken.source();
+                    // 保存起来方便取消来调用
+                    this.source = source;
+
+                    var fd = new FormData();
+                    fd.append('file',this.fiel);
+                    this.$axios.post('/app',fd,{
+                        CancelToken:source.token,
+                        onUploadProgress:function(progressEvent){
+                            //保存最后上传大小
+                            this.loaded = progressEvent.loaded;
+                            console.log(progressEvent.loaded);
+                            console.log(progressEvent.total);
+                            this.rate = (progressEvent.loaded/progressEvent.total)* 100;
+                        }
+                    })
+                },
+                cancelAjax:function(){
+                    this.source.cancel();
+                },
+                changeFile:function(e){
+                    // console.log(e.target.files[0]);
+                    this.file = e.target.files[0];
+                }
+            }
+        }
+
+        //组件内的每一个this对象，都是Vue的孩子
+        //Vue祖宗的原型，就会贡献给所有的孩子
+        Vue.prototype.$axios = axios;
+
+        new Vue({
+            el:"#app",
+            components:{
+                app:App
+            },
+            template:'<app/>'
+        });
+    </script>
+</body>
+</html>

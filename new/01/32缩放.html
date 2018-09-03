@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+</head>
+<body>
+    <canvas width="600" height="400"></canvas>
+</body>
+<script>
+    var c = document.querySelector("canvas");
+    var ctx = c.getContext("2d");
+
+    ctx.translate(300,200);
+
+    //缩放的比例
+    // 横向缩放，纵向缩放
+    ctx.scale(0.5,1);
+    ctx.arc(0,0,100,0,2*Math.PI);
+    ctx.stroke();
+ 
+</script>
+</html>

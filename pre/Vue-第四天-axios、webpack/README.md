@@ -15,7 +15,32 @@ this.$axios.all([请求1,请求2])
 }))
 ```
 
+#### 取消请求
+
+* API 3步骤
+
+  ```js
+  const CancelToken = axios.CancelToken;
+  const source = CancelToken.source();	//创建标示请求的源对象
+
+  this.source = source;	//将对象存储到组件
+  CancelToken:source.token,	//请求的optinos属性
+  this.source.cancel();		//取消到之前的那个请求
+
+  //前端的断电续传	及时获取上传的文件大小，存储起来
+  var file = <input type="file" />	files[0].slice(文件开始部分，文件结尾部分)
+  new FormData().append('file',file)
+
+  //后台就是接收多次文件，都往hbx.mp3文件上追加
+  ```
+
+  ​
+
 #### 拦截器
+
+* 请求拦截器：在发起请求之前可以做的事
+* 响应拦截器：在响应回来以后，做的事
+
 
 * 单请求配置options:`axios.post(url,data,optios);`
 * 全局配置default：`this.$axios.defaults`

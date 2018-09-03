@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        canvas{
+            border: 1px solid #ff0000;
+        }
+    </style>
+    <script>
+    //canvas画布，用来画图
+    </script>
+</head>
+<body>
+    <canvas width="800" height="600"></canvas>
+</body>
+<script>
+    //获取画布
+    var c = document.querySelector("canvas");
+    //获取画图对象
+    var ctx = c.getContext("2d");
+
+    //逆时针的方向
+    ctx.moveTo(100,100);
+    ctx.lineTo(100,300);
+    ctx.lineTo(300,300);
+    ctx.lineTo(300,100);
+    ctx.closePath();//闭合
+
+    //顺时针
+    ctx.moveTo(150,150);
+    ctx.lineTo(250,150);
+    ctx.lineTo(250,250);
+    ctx.lineTo(150,250);
+    ctx.closePath();
+
+    ctx.fillStyle = "green";
+    ctx.fill();
+
+    //非零环绕原则，就是在环绕的时候如果这个结果不是0就填充，是0就不填充
+</script>
+</html>

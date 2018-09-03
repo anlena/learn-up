@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        /* 目标选择器，点击a,找到id为four的p标签，找到后的css */
+        p:target{
+            color: cadetblue;
+        }
+        
+        /* 选中的颜色 */
+        p::selection{
+            color: green;
+        }
+
+        /* 第一个文字的样式 */
+        div:first-letter{
+            color: darkblue;
+        }
+
+        /* 第一行 */
+        div::first-line{
+            color: darkcyan;
+        }
+    </style>
+</head>
+<body>
+    <p>这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <p>这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <p>这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <p id="four">这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <p>这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <p>这是一个不好的故事，是一个惊喜的地方，一个好的开始，你要加油，努力，不然永远都是这样。</p>
+    <a href="#foru">找第四个p标签</a>
+</body>
+</html>

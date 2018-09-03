@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Document</title>
+    <style>
+        .dv{
+            width: 800px;
+            height: 100px;
+            border: 1px solid #dfdfdf;
+        }
+        p{
+            width: 600px;
+            height: 100px;
+            /* 线性渐变 */
+            /* 方向，开始渐变的颜色，结束的渐变颜色 */
+            background-image: linear-gradient(to right,yellow,red);
+            background-image: linear-gradient(90deg,yellow,red);
+
+            /* background-image: linear-gradient(
+                to right,
+                red 20%,
+                green 40%；
+                blue 60%,
+                yellow 100%
+            )    */
+            background-image: linear-gradient(
+                to right,
+                red 20%,
+                green 20%；
+                blue 60%,
+                yellow 60%
+            )   
+        }
+
+        /* 径向渐变 */
+        .cls{
+            /* 半径，坐标(位置),开始的颜色，结束的颜色 */
+            background-image: radial-gradient(100px,at center,red,green);
+            background-image: radial-gradient(100px,at 150px,red,green);
+
+            background-image: radial-gradient(
+                100px at center，
+                red 10%,
+                green 10%,
+                green 20%,
+                yellow 20%,
+                yellow 30%,
+                pink 30%,
+                pink 40%
+            )   
+        }
+    </style>
+</head>
+<body>
+    <!-- 线性渐变 -->
+    <div class="dv">
+        <p></p>
+    </div>
+    <!-- 径向渐变 -->
+    <div class="cls"></div>
+</body>
+</html>
