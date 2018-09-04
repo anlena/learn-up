@@ -10,6 +10,13 @@ import MintUI from 'mint-ui'
 import 'mint-ui/lib/style.css'
 //引入自己的css
 import './assets/css/global.css'
+//引入自己的ul和li组件
+import MyUl from '@/components/Common/MyUl'
+import MyLi from '@/components/Common/MyLi'
+
+// 注册全局组件
+Vue.component(MyUl.name,MyUl)
+Vue.component(MyLi.name,MyLi)
 
 // 配置公共Url
 Axios.defaults.baseURL = 'https://www.sinya.online/api/'

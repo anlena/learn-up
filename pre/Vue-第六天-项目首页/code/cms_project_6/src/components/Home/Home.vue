@@ -6,6 +6,16 @@
                 <img :src="img.img" alt="">
             </mt-swipe-item>
         </mt-swipe>
+        <div class="grid">
+            <my-ul>
+                <my-li v-for="(grid,index) in grids" :key="index">
+                    <a href="">
+                        <span :class="grid.className"></span>
+                        <div>{{grid.title}}</div>
+                    </a>
+                </my-li>
+            </my-ul>
+        </div>
     </div>
 </template>
 
@@ -13,7 +23,15 @@
 export default {
     data (){
         return {
-            imgs:[]
+            imgs:[],    //轮播图数据
+            grids:[
+                {title:"新闻资讯",className:"cms-news"},
+                {title:"动态搜索",className:"cms-photo"},
+                {title:"新闻资讯",className:"cms-news"},
+                {title:"动态搜索",className:"cms-photo"},
+                {title:"新闻资讯",className:"cms-news"},
+                {title:"动态搜索",className:"cms-photo"}
+            ]
         }
     },
 
@@ -36,5 +54,11 @@ export default {
     }
     img{
         width: 100%;
+    }
+    .cms-news{
+
+    }
+    .cms-photo{
+
     }
 </style>
